@@ -9,19 +9,19 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import { TiWeatherDownpour, TiWeatherSunny } from "react-icons/ti";
-import { getWeatherData } from "../api/actions";
+import { getAllSeasonData } from "../api/actions";
 
-const WeatherCard: React.FC = () => {
-  const [data, setData] = useState<WeatherData>();
+const AllSeasonCard: React.FC = () => {
+  const [data, setData] = useState<AllSeasonData>();
   const [loadingState, setLoadingState] = useState(false);
   const [city, setCity] = useState("");
   const [error, setError] = useState("");
 
   const handleSearch = () => {
-    console.log("Fetching Weather Data...");
+    console.log("Fetching season Data...");
     console.log(city);
     setLoadingState(true);
-    getWeatherData(city)
+    getAllSeasonData(city)
       .then((res) => {
         setError("");
         if (res) {
@@ -111,4 +111,4 @@ const WeatherCard: React.FC = () => {
   );
 };
 
-export default WeatherCard;
+export default AllSeasonCard;
