@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 
-const API_URL = "https://jubilant-palm-tree-5gvgx4vr75q52pvg7-3000.app.github.dev/api";
+const API_URL = "https://automatic-space-train-x5r5v9rpgrxv36j5-3000.app.github.dev/api";
 
 export const getSeasonData = async (city: string): Promise<AllSeasonData> => {
   return new Promise<AllSeasonData>((resolve, reject) => {

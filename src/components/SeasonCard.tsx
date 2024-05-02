@@ -8,7 +8,8 @@ import {
   Button,
 } from "@nextui-org/react";
 import { useState } from "react";
-import { TiWeatherDownpour, TiWeatherSunny } from "react-icons/ti";
+import { IoSnow } from "react-icons/io5";
+import { BsFlower1 } from "react-icons/bs";
 import { getSeasonData } from "../api/actions";
 
 const AllSeasonCard: React.FC = () => {
@@ -73,15 +74,29 @@ const AllSeasonCard: React.FC = () => {
         <CardBody>
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold">{data.springSeason.city}</h1>
-            {data.springSeason.temperature > 20 ? (
+            {data.springSeason.temperature > 20 && (
               <div>
-                <TiWeatherSunny className="w-36 h-36" />
-              </div>
-            ) : (
-              <div>
-                <TiWeatherDownpour className="w-36 h-36" />
+                <BsFlower1 className="w-36 h-36" />
               </div>
             )}
+
+            {data.summerSeason.temperature > 35 && (
+              <div>
+                < IoSnow className="w-36 h-36" />
+              </div>
+            )}
+            {data.autumnSeason.temperature >  && (
+              <div>
+                < IoSnow className="w-36 h-36" />
+              </div>
+            )}
+            {data.winterSeason.temperature > 35 && (
+              <div>
+                < IoSnow className="w-36 h-36" />
+              </div>
+            )}
+
+
             <p className="text-3xl font-bold">{data.springSeason.temperature}°C</p>
             <p className="text-lg">Humidity: {data.springSeason.humidity}%</p>
             <p className="text-lg">Wind: {data.springSeason.wind} km/h</p>
