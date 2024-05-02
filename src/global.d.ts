@@ -1,6 +1,6 @@
 interface SeasonData {
-  city:string;
-  season:string;
+  city: string;
+  season: string;
   temperature: number;
   humidity: number;
   wind: number;

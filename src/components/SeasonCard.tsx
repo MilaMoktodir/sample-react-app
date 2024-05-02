@@ -9,7 +9,7 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import { TiWeatherDownpour, TiWeatherSunny } from "react-icons/ti";
-import { getAllSeasonData } from "../api/actions";
+import { getSeasonData } from "../api/actions";
 
 const AllSeasonCard: React.FC = () => {
   const [data, setData] = useState<AllSeasonData>();
@@ -21,8 +21,8 @@ const AllSeasonCard: React.FC = () => {
     console.log("Fetching season Data...");
     console.log(city);
     setLoadingState(true);
-    getAllSeasonData(city)
-      .then((res) => {
+    getSeasonData(city)
+      .then((res: AllSeasonData) => {
         setError("");
         if (res) {
           console.log(res);
@@ -30,7 +30,7 @@ const AllSeasonCard: React.FC = () => {
           setLoadingState(false);
         }
       })
-      .catch((error) => {
+      .catch((error: string) => {
         console.error(error);
         setLoadingState(false);
         setData(undefined);
@@ -72,8 +72,8 @@ const AllSeasonCard: React.FC = () => {
       {data ? (
         <CardBody>
           <div className="flex flex-col items-center">
-            <h1 className="text-3xl font-bold">{data.city}</h1>
-            {data.temperature > 20 ? (
+            <h1 className="text-3xl font-bold">{data.springSeason.city}</h1>
+            {data.springSeason.temperature > 20 ? (
               <div>
                 <TiWeatherSunny className="w-36 h-36" />
               </div>
@@ -82,10 +82,10 @@ const AllSeasonCard: React.FC = () => {
                 <TiWeatherDownpour className="w-36 h-36" />
               </div>
             )}
-            <p className="text-3xl font-bold">{data.temperature}°C</p>
-            <p className="text-lg">Humidity: {data.humidity}%</p>
-            <p className="text-lg">Wind: {data.wind} km/h</p>
-            <p className="text-lg">Rain: {data.rain} %</p>
+            <p className="text-3xl font-bold">{data.springSeason.temperature}°C</p>
+            <p className="text-lg">Humidity: {data.springSeason.humidity}%</p>
+            <p className="text-lg">Wind: {data.springSeason.wind} km/h</p>
+            <p className="text-lg">Rain: {data.springSeason.rain} %</p>
           </div>
         </CardBody>
       ) : (

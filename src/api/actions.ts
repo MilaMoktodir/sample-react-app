@@ -7,13 +7,7 @@ export const getSeasonData = async (city: string): Promise<AllSeasonData> => {
     axios
       .get(`${API_URL}/season/${city}`)
       .then((res) => {
-        resolve({
-          city: city,
-          temperature: res.data.temperature,
-          humidity: res.data.humidity,
-          wind: res.data.wind,
-          rain: res.data.rain,
-        });
+        resolve(res.data);
       })
       .catch((error) => {
         if (axios.isAxiosError(error)) {
